@@ -17,14 +17,14 @@ function App() {
 
     return imageLists.map((item, index) => {
       return (
-        <div className="col-xl-3 col-md-4 col-6 p-1" key={index}>
+        <div className="col-xl-3 p-1" key={index}>
           <div className="card card-custom">
             <div className="card-body">
-              <img src={item.images.original.url} className="card-img-top" alt="" />
+              <img src={item.images.original.url} class="card-img-top" alt="" />
             </div>
             {item.user && (
               <div className="user">
-                <img src={item.user.avatar_url} width="10px" />
+                <img src={item.user.avatar_url} width="15px" />
                 <span className="user-name">{item.user.display_name}</span>
               </div>
             )}

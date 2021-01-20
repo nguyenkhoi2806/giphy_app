@@ -1,0 +1,13 @@
+@import "~bootstrap/scss/bootstrap.scss";
+body {
+  background-color: #f4f4f4;
+  .card-custom {
+      height: 100%;
+      padding: 5px;
+      background-color: white;
+      border: 0px;
+      img {
+          height: 100%;
+      }
+  }
+}
