@@ -2,7 +2,9 @@ import React from "react";
 import * as GIHPYAPI from "./api/GiphyApi";
 import { useEffect, useState } from "react";
 
-import "./assets/index.scss";
+import Image from "./components/Image";
+
+import "./assets/scss/index.scss";
 function App() {
   const [imageLists, setImageLists] = useState([]);
 
@@ -20,25 +22,37 @@ function App() {
         <div className="col-xl-3 col-md-4 col-6 p-1" key={index}>
           <div className="card card-custom">
             <div className="card-body">
-              <img src={item.images.original.url} className="card-img-top" alt="" />
+                <Image
+                  src={item.images.original.url}
+                  className="card-img-top"
+                  alt={item.id}
+                  item={item}
+                />
             </div>
-            {item.user && (
-              <div className="user">
-                <img src={item.user.avatar_url} width="10px" />
-                <span className="user-name">{item.user.display_name}</span>
-              </div>
-            )}
+            <div className="user">
+              {item.user && (
+                <>
+                  <img
+                    src={item.user.avatar_url}
+                    width="10px"
+                    alt={item.user.display_name}
+                  />
+                  <span className="user-name">{item.user.display_name}</span>
+                </>
+              )}
+            </div>
           </div>
         </div>
       );
     });
   };
 
+
   return (
     <div className="App">
       <div className="container">
         <div className="row card-deck">
-          <ListImage imageLists={imageLists} />
+          <ListImage imageLists={imageLists}  />
         </div>
       </div>
     </div>

@@ -1,4 +1,6 @@
 @import "~bootstrap/scss/bootstrap.scss";
+@import "./responsive.scss";
+
 body {
   background-color: #f4f4f4;
   .card-custom {
@@ -10,12 +12,24 @@ body {
       background-color: white;
       border: 0px;
       border-radius: 5px;
+      min-height: 250px;
+      @media screen and (max-width: $screen-sm){
+        min-height: 200px;
+      }
+      .spinner {
+        position: absolute;
+        top: 40%;
+        left: 45%;
+      }
     }
     .user {
       width: 100%;
       float: left;
+      height: 25px;
+      margin-top: 5px;
     }
     img {
+      width: 100%;
       height: 100%;
     }
     .user {
