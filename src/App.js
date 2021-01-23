@@ -1,18 +1,32 @@
-import React from "react";
-import * as GIHPYAPI from "./api/GiphyApi";
 import { useEffect, useState } from "react";
+import InfiniteScroll from 'react-infinite-scroller';
 
+import * as GIHPYAPI from "./api/GiphyApi";
 import Image from "./components/Image";
+import Error from "./components/Error";
+import Loading from "./components/Loading";
 
 import "./assets/scss/index.scss";
 function App() {
+  const [loading, setLoading] = useState(true);
   const [imageLists, setImageLists] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     GIHPYAPI.getTrendy().then((res) => {
       setImageLists(res.data.data);
+      setLoading(false)
+    }).catch(error => {
+      setError(true)
     });
   }, []);
+
+  function LoadMoreImages() {
+    GIHPYAPI.getTrendy().then((res) => {
+      setImageLists(res.data.data);
+      setLoading(false)
+    })
+  }
 
   const ListImage = ({ imageLists }) => {
     if (!imageLists) return null;
@@ -47,12 +61,15 @@ function App() {
     });
   };
 
+  if(error) return <Error/>
+
+  if(loading) return <Loading/>
 
   return (
     <div className="App">
       <div className="container">
         <div className="row card-deck">
-          <ListImage imageLists={imageLists}  />
+            <ListImage imageLists={imageLists}  />
         </div>
       </div>
     </div>
