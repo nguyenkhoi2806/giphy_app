@@ -14,8 +14,9 @@ body {
       border: 0px;
       border-radius: 5px;
       min-height: 250px;
+      max-height: 250px;
       @media screen and (max-width: $screen-sm){
-        min-height: 200px;
+        min-height: 100%;
       }
       .spinner {
         position: absolute;

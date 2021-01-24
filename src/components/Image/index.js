@@ -4,6 +4,7 @@ import Lightbox from "react-image-lightbox";
 import 'react-image-lightbox/style.css'; //
 import BounceLoader from "react-spinners/BounceLoader";
 
+import * as ImageService from "../../services/Image";
 import NotFound from "../../assets/images/not_found.png";
 
 const Image = (props) => {

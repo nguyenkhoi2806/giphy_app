@@ -8,12 +8,12 @@ const LoadingItem = () => (
   </div>
 );
 
-const Loading = () => {
-  const itemLoad = 12;
+const Loading = (props) => {
+  const itemLoad = props.item ? props.item : 12;
   const ListItemLoading = () => {
       let i = 0, htmlLoading = [];
       while(i < itemLoad){
-        htmlLoading.push(<LoadingItem />);
+        htmlLoading.push(<LoadingItem key={i}/>);
         i++;
       }
       return htmlLoading;

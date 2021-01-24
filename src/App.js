@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import InfiniteScroll from 'react-infinite-scroller';
 
 import * as GIHPYAPI from "./api/GiphyApi";
 import Image from "./components/Image";
@@ -13,20 +12,15 @@ function App() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    GIHPYAPI.getTrendy().then((res) => {
-      setImageLists(res.data.data);
-      setLoading(false)
-    }).catch(error => {
-      setError(true)
-    });
+    GIHPYAPI.getTrendy()
+      .then((res) => {
+        setImageLists(res.data.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(true);
+      });
   }, []);
-
-  function LoadMoreImages() {
-    GIHPYAPI.getTrendy().then((res) => {
-      setImageLists(res.data.data);
-      setLoading(false)
-    })
-  }
 
   const ListImage = ({ imageLists }) => {
     if (!imageLists) return null;
@@ -36,12 +30,12 @@ function App() {
         <div className="col-xl-3 col-md-4 col-6 p-1" key={index}>
           <div className="card card-custom">
             <div className="card-body">
-                <Image
-                  src={item.images.original.url}
-                  className="card-img-top"
-                  alt={item.id}
-                  item={item}
-                />
+              <Image
+                src={item.images && item.images.original.url}
+                className="card-img-top"
+                alt={item.id}
+                item={item}
+              />
             </div>
             <div className="user">
               {item.user && (
@@ -61,15 +55,15 @@ function App() {
     });
   };
 
-  if(error) return <Error/>
+  if (error) return <Error />;
 
-  if(loading) return <Loading/>
+  if (loading) return <Loading />;
 
   return (
     <div className="App">
       <div className="container">
         <div className="row card-deck">
-            <ListImage imageLists={imageLists}  />
+          <ListImage imageLists={imageLists} />
         </div>
       </div>
     </div>
