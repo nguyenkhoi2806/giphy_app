@@ -4,7 +4,6 @@ import Lightbox from "react-image-lightbox";
 import 'react-image-lightbox/style.css'; //
 import BounceLoader from "react-spinners/BounceLoader";
 
-import * as ImageService from "../../services/Image";
 import NotFound from "../../assets/images/not_found.png";
 
 const Image = (props) => {
@@ -15,16 +14,11 @@ const Image = (props) => {
       <BounceLoader size={35} color="#1abc9c" />
     </div>
   );
-
-  function showFullScreen(item) {
-    setOpenFullScreen(true);
-  }
-
   return (
     <>
-      {openFullScreen && <Lightbox mainSrc={props.src} onCloseRequest={() => setOpenFullScreen(false)}/>}
+      {openFullScreen && <Lightbox mainSrc={props.preview} onCloseRequest={() => setOpenFullScreen(false)}/>}
       <Img
-        onClick={() => showFullScreen()}
+        onClick={() =>  setOpenFullScreen(true)}
         src={props.src}
         alt={props.alt ? props.alt : ""}
         className={props.className && props.className}
