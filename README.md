@@ -1,6 +1,6 @@
 ## Available Scripts
 In the project directory, you can run:
-### `npm start`
+### `npm run start`
 
 ### `Description`
 This app display 20 images newest trending in giphy.com.
