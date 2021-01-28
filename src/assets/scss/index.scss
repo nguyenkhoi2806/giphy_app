@@ -4,6 +4,10 @@
 body {
   background-color: #f4f4f4;
   padding-top: 50px;
+  .card-deck {
+    align-content: center;
+    justify-content: center;
+  }
   .card-custom {
     height: 100%;
     border: 0px;
@@ -28,6 +32,8 @@ body {
         @media screen and (max-width: $screen-sm) {
           position: relative;
           min-height: 150px;
+          top: 40%;
+          left: 38%;
           .css-6nc57b {
             position: absolute;
             width: 35px;
@@ -48,8 +54,8 @@ body {
       margin: 10px 0px;
       padding-left: 5px;
       display: flex;
-      @media screen and(max-width: $screen-sm-max) {
-        min-height: 15px;
+      @media screen and(max-width: $screen-sm) {
+        min-height: 25px;
       }
       img {
         border-radius: 50%;
